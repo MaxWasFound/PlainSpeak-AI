@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f7f2">
+  <meta name="author" content="Max">
+  <meta name="application-name" content="PlainSpeak AI">
+  <meta name="description" content="Turn complicated writing into clear, useful English with PlainSpeak AI.">
+  <meta property="og:site_name" content="PlainSpeak AI">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PlainSpeak AI — Make meaning clearer">
+  <meta property="og:description" content="Simplify text, summarise ideas, and understand difficult words. Keep the meaning. Lose the confusion.">
+  <title>PlainSpeak AI — Make meaning clearer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="site-shell">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="PlainSpeak AI home">
+        <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 28 28"><path d="M5 8h18M5 14h12M5 20h8"/><circle cx="22" cy="20" r="2"/></svg></span>
+        <span>Plain<span class="brand-accent">Speak</span><span class="brand-ai">AI</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#how">How it works</a>
+        <a class="nav-cta" href="#workspace">Try it free <span aria-hidden="true">↘</span></a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> A little more clarity, please</div>
+          <h1>Good ideas deserve<br><em>to be understood.</em></h1>
+          <p>Turn complicated writing into clear, useful English. Keep the meaning. Lose the confusion.</p>
+          <a class="hero-link" href="#workspace">Make something clearer <span aria-hidden="true">↓</span></a>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+          <div class="art-note note-back"><span class="note-line short"></span><span class="note-line"></span><span class="note-line medium"></span><span class="note-line short"></span></div>
+          <div class="art-note note-front"><span class="note-kicker">THE IDEA</span><span class="note-title">Clearer words.<br>Same meaning.</span><span class="note-rule"></span><span class="note-line medium"></span><span class="note-line short"></span></div>
+          <div class="art-spark spark-one">✳</div><div class="art-spark spark-two">✦</div><div class="art-pill">made for humans <span>↗</span></div>
+        </div>
+      </section>
+
+      <section id="workspace" class="workspace-section" aria-labelledby="workspace-title">
+        <div class="section-intro">
+          <div><span class="section-kicker">YOUR PERSONAL CLARITY TOOL</span><h2 id="workspace-title">Let's untangle that.</h2></div>
+          <p>Start with any paragraph.<br>Choose what you need.</p>
+        </div>
+        <div class="workspace">
+          <article class="work-card input-card">
+            <div class="card-top"><div class="step-label"><span>01</span> THE ORIGINAL</div><button type="button" id="clear" class="text-button">Clear text <span aria-hidden="true">×</span></button></div>
+            <label class="sr-only" for="source">Text you want to simplify</label>
+            <textarea id="source" maxlength="8000" placeholder="Paste the paragraph that made you stop and reread…" spellcheck="true"></textarea>
+            <div class="input-meta"><span id="count" aria-live="polite">0 / 8,000 characters</span><button type="button" id="example" class="text-button">Use an example <span aria-hidden="true">↗</span></button></div>
+            <div class="mode-heading">WHAT WOULD HELP?</div>
+            <div class="mode-options" role="group" aria-label="Choose what to do with your text">
+              <button type="button" class="mode-option active" data-mode="simple" aria-pressed="true"><span class="mode-icon">Aa</span><span><strong>Simplify</strong><small>Make it easier to read</small></span></button>
+              <button type="button" class="mode-option" data-mode="summary" aria-pressed="false"><span class="mode-icon summary-icon">≡</span><span><strong>Summarise</strong><small>Keep just the key points</small></span></button>
+              <button type="button" class="mode-option" data-mode="terms" aria-pressed="false"><span class="mode-icon terms-icon">?</span><span><strong>Explain words</strong><small>Decode tricky terms</small></span></button>
+            </div>
+            <input id="mode" type="hidden" value="simple">
+            <button type="button" id="go" class="primary-button"><span class="button-spark" aria-hidden="true">✳</span><span id="go-label">Make it clearer</span><span class="button-arrow" aria-hidden="true">↗</span></button>
+            <div class="privacy-note"><span aria-hidden="true">◇</span><span>Your text is sent to an AI service to generate a result. Avoid entering private information.</span></div>
+          </article>
+
+          <article class="work-card result-card" aria-live="polite" aria-busy="false">
+            <div class="card-top"><div class="step-label"><span>02</span> THE CLEAR VERSION</div><div class="result-status"><span class="status-dot"></span><span id="result-badge">READY</span></div></div>
+            <div id="output" class="output-area">
+              <div class="empty-state"><div class="empty-symbol"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M12 8h24v32H12z"/><path d="M18 17h12M18 23h12M18 29h7"/></svg><span>✳</span></div><h3>Your aha moment goes here.</h3><p>Your result will appear here, ready to read, copy, and use.</p></div>
+            </div>
+            <div class="result-footer"><span id="status" role="status">Waiting for your text</span><button type="button" id="copy" class="copy-button" disabled><span aria-hidden="true">▢</span> Copy result</button></div>
+          </article>
+        </div>
+        <p class="keyboard-hint"><kbd>Ctrl</kbd> <span>+</span> <kbd>Enter</kbd> <span>to process your text</span></p>
+      </section>
+
+      <section id="how" class="how-section">
+        <div class="how-heading"><span class="section-kicker">SMALL TOOL. USEFUL DIFFERENCE.</span><h2>Less decoding.<br><em>More understanding.</em></h2><p>Made to help you get to the point, without pretending every topic is simple.</p></div>
+        <div class="benefit-grid">
+          <article class="benefit"><div class="benefit-icon purple-icon">Aa</div><span class="benefit-number">01 / MEANING</span><h3>Keep the important bits</h3><p>Plain language should preserve the original idea—not quietly change it.</p></article>
+          <article class="benefit"><div class="benefit-icon green-icon">↗</div><span class="benefit-number">02 / CHOICE</span><h3>Pick your kind of clarity</h3><p>Rewrite, summarise, or unpack difficult words depending on what you need.</p></article>
+          <article class="benefit"><div class="benefit-icon orange-icon">◎</div><span class="benefit-number">03 / CURIOSITY</span><h3>Stay in the driver's seat</h3><p>Use AI as a helper. For important details, check the original source.</p></article>
+        </div>
+      </section>
+
+      <aside class="honesty-note"><div class="honesty-icon">i</div><div><strong>Clarity is a starting point, not a guarantee.</strong><p>AI can miss context, make mistakes, or leave out nuance. Double-check important information with a trusted source.</p></div><span class="honesty-decoration" aria-hidden="true">✳</span></aside>
+    </main>
+
+    <footer class="footer">
+      <a class="brand footer-brand" href="#top" aria-label="PlainSpeak AI home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 28 28"><path d="M5 8h18M5 14h12M5 20h8"/><circle cx="22" cy="20" r="2"/></svg></span><span>Plain<span class="brand-accent">Speak</span><span class="brand-ai">AI</span></span></a>
+      <div class="footer-details">
+        <span class="footer-tagline">A small project with a big purpose.</span>
+        <span class="copyright-line">© 2026 PlainSpeak AI. All rights reserved. Built by <strong>Max</strong>.</span>
+        <span class="footer-disclaimer">PlainSpeak AI is an independent project. AI-generated results may be inaccurate; verify important information with trusted sources.</span>
+      </div>
+      <a class="back-top" href="#top">Back to top ↑</a>
+    </footer>
+  </div>
+</body>
+</html>
