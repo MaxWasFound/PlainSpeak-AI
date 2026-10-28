@@ -1,53 +1,142 @@
+ <div align="center">
+
 # PlainSpeak AI
 
-**Understand more. Struggle less.**
+### Make complicated English easier to understand.
 
-An independent project built by **Max**. The site footer displays: `© 2026 PlainSpeak AI. All rights reserved. Built by Max.` Update the year if you reuse this project in a later year.
+Turn dense text into clear, useful language — without losing sight of the original meaning.
 
-A small, responsive AI clarity tool with three modes:
-- **Make it simpler** — rewrite in clear English.
-- **Summarise it** — get 3–6 concise bullet points.
-- **Explain difficult words** — define technical or unfamiliar terms.
+**[Open the live app ↗](https://plainspeak-ai.moinacksaha66.workers.dev) · [View source code](https://github.com/MaxWasFound/PlainSpeak-AI)**
 
-## Stack
-HTML, CSS, vanilla JavaScript, Cloudflare Workers, and Cloudflare Workers AI (`@cf/meta/llama-3.1-8b-instruct-fp8`).
+![Status](https://img.shields.io/badge/status-live-brightgreen?style=for-the-badge)
+![Frontend](https://img.shields.io/badge/frontend-HTML%20%2F%20CSS%20%2F%20JS-5b8def?style=for-the-badge)
+![AI](https://img.shields.io/badge/AI-Cloudflare%20Workers%20AI-f38020?style=for-the-badge)
 
-The browser calls a same-origin Worker endpoint. No AI API key is exposed in frontend JavaScript.
+</div>
 
-## Run locally
-1. Install a current Node.js LTS version: https://nodejs.org/
-2. Open a terminal in this folder and run `npm install`.
-3. Run `npx wrangler login` and follow the browser sign-in steps.
-4. Run `npx wrangler dev`.
-5. Open the local URL printed in the terminal.
+---
 
-Workers AI availability, quotas, and pricing depend on current Cloudflare account terms. Check your dashboard before public launch. If AI is not available to your account, the app returns a setup error instead of exposing a key.
+## ✦ What is PlainSpeak?
 
-## Deploy
-From this folder run `npx wrangler login` and then `npx wrangler deploy`. The `wrangler.jsonc` file configures the static assets and Workers AI binding. Follow any current Cloudflare prompts to enable or approve Workers AI.
+PlainSpeak AI is an AI-powered writing clarity tool that helps people understand difficult passages, identify key information, and learn unfamiliar vocabulary.
 
-## Structure
+Built as an independent project, it combines a responsive web interface with a server-side Cloudflare Worker that connects to Workers AI.
+
+## ⚡ Features
+
+| Mode | Purpose |
+|---|---|
+| **Simplify** | Rewrite complicated text in clearer English. |
+| **Summarize** | Condense long passages into key points. |
+| **Explain Words** | Understand unfamiliar or technical vocabulary. |
+
+Additional features include:
+
+- Responsive interface for desktop and mobile.
+- Copy generated results.
+- Bounded text input.
+- Server-side AI requests without exposing an AI API key in browser JavaScript.
+
+## 🖥️ Preview
+
+<!-- Add a real screenshot at docs/images/plainspeak-preview.png and uncomment the next line. -->
+<!-- ![PlainSpeak AI interface](docs/images/plainspeak-preview.png) -->
+
+**[Try the live version →](https://plainspeak-ai.moinacksaha66.workers.dev)**
+
+## 🧭 Architecture
+
+```mermaid
+flowchart LR
+    A[User enters text] --> B[Web interface]
+    B --> C[Cloudflare Worker]
+    C --> D[Workers AI]
+    D --> C
+    C --> B
+    B --> E[Read or copy result]
+```
+
+## 🧰 Tech stack
+
+- **Frontend:** HTML, CSS, vanilla JavaScript
+- **Backend:** Cloudflare Workers
+- **AI inference:** Cloudflare Workers AI
+- **Hosting:** Cloudflare Workers and static assets
+
+## 🚀 Run locally
+
+### Requirements
+
+- [Node.js](https://nodejs.org/) with npm
+- A [Cloudflare account](https://dash.cloudflare.com/) with Workers AI access
+
+### Installation
+
+```bash
+git clone https://github.com/MaxWasFound/PlainSpeak-AI.git
+cd PlainSpeak-AI
+npm install
+npx wrangler login
+npx wrangler dev
+```
+
+Open the local URL printed in your terminal.
+
+### Deploy
+
+After signing in and checking `wrangler.jsonc`, run:
+
+```bash
+npx wrangler deploy
+```
+
+Follow any prompts required to enable or authorize Workers AI. Availability and quotas depend on your Cloudflare account and current service terms.
+
+## 📁 Project structure
+
 ```text
-plainspeak-ai/
+PlainSpeak-AI/
 ├── public/
 │   ├── index.html
 │   ├── styles.css
 │   └── app.js
-├── src/index.js
+├── src/
+│   └── index.js
 ├── package.json
 ├── wrangler.jsonc
 └── README.md
 ```
 
-## Responsible use and next steps
-- The Worker limits input to 8,000 characters; output is inserted as text, not HTML.
-- Don't submit passwords, personal records, or sensitive information.
-- AI may change nuance or make mistakes. Verify important details against the original.
-- This starter has no login, saved history, abuse throttling, or analytics. Before sharing widely, add rate limiting and abuse controls and review current AI usage terms.
-- Test with passages containing names, numbers, dates, technical vocabulary, and caveats. Keep a small evaluation set and document mistakes honestly.
-- Add Bengali only after the English version is reliable.
+## 🔐 Responsible use
 
-## Ownership and third-party notices
-The PlainSpeak AI name, original branding, page copy, and original project code are presented as the work of Max, unless a file or component states otherwise. Third-party libraries, fonts, AI models, and platform services remain subject to their own licenses and terms; this copyright notice does not claim ownership of those materials. Review the relevant licenses and service terms before public release.
+- Don't submit passwords, private records, or other sensitive information.
+- AI-generated text may omit context or change nuance. Verify important information against the original.
+- The Worker currently limits input to 8,000 characters.
+- The project does not currently include user accounts, saved history, analytics, or a complete abuse-prevention system.
 
-No formal open-source license is included by default. If you make the repository public and want others to reuse the code, choose and add a license explicitly. A copyright notice alone does not grant an open-source reuse license.
+## 🛣️ Roadmap
+
+- Add real interface screenshots and a short demo GIF.
+- Test the three modes against example passages.
+- Improve accessibility and error handling.
+- Explore additional language support after the English experience is reliable.
+
+## 👤 Built by
+
+**Max** — an independent project exploring practical AI, web development, and clear communication.
+
+## © Ownership & third-party notices
+
+The PlainSpeak AI name, original branding, page copy, and original project code are presented as the work of Max unless otherwise noted. Third-party libraries, AI models, fonts, and platform services remain subject to their own licenses and terms.
+
+No open-source license is included by default. Reuse permissions should be made explicit by adding a suitable license if open-source distribution is intended.
+
+---
+
+<div align="center">
+
+**Less confusion. More clarity.**
+
+[Try PlainSpeak AI](https://plainspeak-ai.moinacksaha66.workers.dev)
+
+</div>
